@@ -1,9 +1,17 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import viteTsConfigPaths from 'vite-tsconfig-paths';
+import { defineConfig, createLogger } from 'vite'
+import react from '@vitejs/plugin-react'
+import viteTsConfigPaths from 'vite-tsconfig-paths'
 
+const logger = createLogger()
+const originalWarning = logger.warn
+logger.warn = (msg, options) => {
+  if (msg.includes('The above dynamic import cannot be analyzed by Vite'))
+    return
+  originalWarning(msg, options)
+}
 export default defineConfig({
+  customLogger: logger,
   cacheDir: '../../node_modules/.vite/portfolio',
 
   server: {
@@ -19,7 +27,7 @@ export default defineConfig({
   plugins: [
     react(),
     viteTsConfigPaths({
-      root: '../../',
+      root: '../..',
     }),
   ],
 
@@ -40,4 +48,4 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
-});
+})

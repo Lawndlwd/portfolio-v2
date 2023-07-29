@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@property --rotate {
+  syntax: '<angle>';
+  initial-value: 132deg;
+  inherits: false;
+}
+
+html {
+  background-color: #1e1e1e;
+  /* background-color: #ececec; */
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+  color: aliceblue;
+}
+#root,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+:root {
+  --color-primary: #dcff50;
+  --color-secondary: #5c42de;
+  --color-heading: #f5f5f7;
+  --color-text: rgba(255, 255, 255, 0.6);
+  --color-background: #090909;
+  --card-height: 240px;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.megenta::after {
+  transition: all 0.1s ease-in-out;
+  content: '';
+  position: absolute;
+  bottom: 13.5%;
+  z-index: -1;
+  height: 0.6em;
+  width: 104%;
+  left: -1%;
+  background: linear-gradient(
+    65deg,
+    #df058d 0%,
+    #df058d 100%,
+    rgba(255, 209, 0, 0) 100%
+  );
+}
+.blue::after {
+  transition: all 0.1s ease-in-out;
+  content: '';
+  position: absolute;
+  bottom: 13.5%;
+  z-index: -1;
+  height: 0.6em;
+  width: 104%;
+  left: -1%;
+  background: linear-gradient(
+    65deg,
+    #0567df 0%,
+    #0567df 100%,
+    rgba(255, 209, 0, 0) 100%
+  );
+}
+.yellow::after {
+  transition: all 0.1s ease-in-out;
+  content: '';
+  position: absolute;
+  bottom: 13.5%;
+  z-index: -1;
+  height: 0.6em;
+  width: 104%;
+  left: -1%;
+  background: linear-gradient(
+    65deg,
+    #dfd805 0%,
+    #dfd805 100%,
+    rgba(255, 209, 0, 0) 100%
+  );
+}

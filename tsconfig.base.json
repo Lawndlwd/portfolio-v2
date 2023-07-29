@@ -14,7 +14,15 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@portfolio/*": ["apps/portfolio/src/*"],
+      "@portfolio/assets/*": ["apps/portfolio/src/assets/*"],
+      "@portfolio/helpers/*": ["apps/portfolio/src/helpers/*"],
+      "@portfolio/locales": ["apps/portfolio/src/locales/"],
+      "@portfolio/locales/*": ["apps/portfolio/src/locales/*"],
+      "@portfolio/pages/*": ["apps/portfolio/src/pages/*"],
+      "@portfolio/ui-components": ["libs/ui-components/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

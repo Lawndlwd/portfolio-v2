@@ -1,0 +1,6 @@
+export { Hero } from './Hero'
+export { Nav } from './Nav'
+export { Feautres } from './Feautres'
+export { Game } from './Game'
+export { Expertise } from './Expertises'
+export { Works } from './Works'
