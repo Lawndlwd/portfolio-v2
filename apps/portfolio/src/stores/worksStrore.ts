@@ -6,6 +6,8 @@ type UseWorksStroreType = {
   setInViewHeader: (isAnimateHeader: boolean) => void
   inViewNav: boolean
   setInViewNav: (isAnimateNav: boolean) => void
+  section: number
+  setSection: (section: number) => void
 }
 export const useWorksStrore = create<UseWorksStroreType>(set => ({
   inViewWorks: null,
@@ -15,4 +17,6 @@ export const useWorksStrore = create<UseWorksStroreType>(set => ({
     set({ inViewHeader: isAnimateHeader }),
   inViewNav: true,
   setInViewNav: (isAnimateNav: boolean) => set({ inViewNav: isAnimateNav }),
+  section: 1,
+  setSection: (section: number) => set({ section }),
 }))

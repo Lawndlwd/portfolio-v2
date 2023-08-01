@@ -1,1 +1,1 @@
-export { Hero, Feautres, Game, Expertise, Works, Nav } from './Sections'
+export { Hero, Feautres, Game, Expertise, Works } from './Sections'

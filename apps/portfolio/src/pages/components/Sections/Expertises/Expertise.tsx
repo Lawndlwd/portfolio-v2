@@ -21,7 +21,7 @@ export const Expertise = () => {
   const scale = useTransform(scrollYProgress, [0.01, 0.35, 0.75], [0.4, 0.9, 1])
 
   return (
-    <section className="relative mt-[58vh] h-[120vh]">
+    <section id="exp" className="relative h-[800px]">
       <div className="">
         <motion.div
           // style={{ scale, opacity }}
@@ -111,7 +111,7 @@ export const Expertise = () => {
               </Stack>
             </Box>
           </Row>
-          <div className="w-[600px] mx-auto mt-[-4vh] opacity-30">
+          <div className="w-[800px] mx-auto mt-[-20px] ">
             <img src={code} alt="code" />
           </div>
         </motion.div>

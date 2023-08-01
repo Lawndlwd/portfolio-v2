@@ -1,96 +1,83 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, scroll } from 'framer-motion'
 import '../styles/main.css'
-import { Hero, Expertise, Works, Nav } from './components'
+import { Hero, Expertise, Works } from './components'
 import { Row, Stack } from '@portfolio/ui-components'
 import { useWorksStrore } from '@portfolio/stores/worksStrore'
-import { Canvas } from '@react-three/fiber'
-import { Scroll, ScrollControls, Sphere } from '@react-three/drei'
-
+import { useRef } from 'react'
+// add glass
 export const Home = () => {
   const inViewHeader = useWorksStrore(state => state.inViewHeader)
+  const section = useWorksStrore(state => state.section)
+  const setSection = useWorksStrore(state => state.setSection)
+  const { scrollXProgress, scrollY } = useScroll()
+
+  const refHero = useRef<HTMLDivElement>(null)
+  const refSections = useRef<HTMLDivElement>(null)
+
+  scroll(progress => {
+    const elmnt = document.getElementById('exp')
+
+    if (progress.y.current > 100 && elmnt) {
+      console.log('elmnt', elmnt)
+      elmnt.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'end',
+      })
+    }
+  })
 
   return (
-    <Canvas shadows camera={{ position: [0, 3, 10], fov: 30 }}>
-      <color attach="background" args={['#272727']} />
-      <ScrollControls pages={5} damping={0.2}>
-        <Sphere />
-        <Scroll html>
-          <Stack gap={40}>
-            <div>
-              {!inViewHeader && (
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, ease: 'circInOut' }}
-                  className="fixed top-0 flex justify-center w-[1200px] h-20 z-10 opacity-0"
+    <>
+      <div className="back fixed opacity-10   w-full h-full pointer-events-none " />
+      <div className="max-w-[1218px] mx-auto">
+        <Stack gap={200}>
+          {!inViewHeader && (
+            <motion.div
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: 'circInOut' }}
+              className="fixed top-0 flex justify-between w-[1220px] h-20 z-50 opacity-0"
+            >
+              <Row
+                gap={36}
+                templateColumns="6fr 5fr"
+                alignItems="center"
+                className="relative w-full mx-auto bg-[#1e1e1e]"
+              >
+                <motion.h1
+                  layoutId="heading-title"
+                  layout="position"
+                  className="z-10 text-3xl font-bold select-none"
                 >
-                  <Row
-                    gap={36}
-                    templateColumns="2fr 3fr 4fr"
-                    alignItems="center"
-                    className="w-full mx-auto bg-[#1e1e1e]"
-                  >
-                    <motion.h1
-                      layoutId="heading-title"
-                      layout="position"
-                      className="z-10 text-3xl font-bold select-none"
-                    >
-                      Levende
-                    </motion.h1>
-                    <Row templateColumns="1fr 1fr 1fr 1fr" gap={8}>
-                      <motion.div
-                        layoutId="heading-About"
-                        layout="position"
-                        layoutDependency={{ duration: 3 }}
-                        className="px-4 py-2 border-2 rounded-full cursor-pointer border-sky-600 text-sky-300"
-                      >
-                        about
-                      </motion.div>
-                      <motion.div
-                        layoutId="heading-Works"
-                        layout="size"
-                        className="px-4 py-2 border-2 rounded-full cursor-pointer border-emerald-600 text-emerald-300"
-                      >
-                        works
-                      </motion.div>
-                      <motion.div
-                        layoutId="heading-Blog"
-                        layout="preserve-aspect"
-                        className="px-4 py-2 text-indigo-300 border-2 border-indigo-600 rounded-full cursor-pointer"
-                      >
-                        Blog
-                      </motion.div>
-                      <motion.div
-                        layoutId="heading-Contact"
-                        layout="preserve-aspect"
-                        className="px-4 py-2 text-yellow-200 border-2 border-yellow-600 rounded-full cursor-pointer"
-                      >
-                        contact
-                      </motion.div>
-                    </Row>
-                    <motion.h2
-                      layoutId="heading-subtitle"
-                      layout="position"
-                      className="z-10 text-xl select-none font-extralight"
-                    >
-                      Full Stack JavaScript
-                      <span role="img" aria-label="robot">
-                        🤖
-                      </span>
-                      . React, Vue, TypeScript, Node.
-                    </motion.h2>
-                  </Row>
-                </motion.div>
-              )}
-              <Hero />
-              {/* <Nav /> */}
-              <Expertise />
-              <Works />
-              <div className="h-screen">new</div>
-            </div>
-          </Stack>
-        </Scroll>
-      </ScrollControls>
-    </Canvas>
+                  Levende
+                </motion.h1>
+                <motion.h2
+                  layoutId="heading-subtitle"
+                  layout="position"
+                  className="z-10 text-xl select-none font-extralight"
+                >
+                  Full Stack JavaScript
+                  <span role="img" aria-label="robot">
+                    🤖
+                  </span>
+                  . React, Vue, TypeScript, Node.
+                </motion.h2>
+              </Row>
+            </motion.div>
+          )}
+          <Hero />
+          <Expertise />
+          <Works />
+        </Stack>
+      </div>
+      {/* <Canvas shadows camera={{ position: [0, 3, 10], fov: 30 }}>
+        <color attach="background" args={['#1e1e1e']} />
+        <ScrollControls pages={5} damping={0.2}>
+          <Sphere />
+          <Scroll html>YOOO</Scroll>
+        </ScrollControls>
+      </Canvas> */}
+    </>
   )
 }
 

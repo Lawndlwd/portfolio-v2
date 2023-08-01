@@ -31,7 +31,7 @@ export const Works = () => {
   return (
     <Container>
       <div className="flex w-full items-start gap-40">
-        <Stack className="w-full py-[50vh]">
+        <Stack className="w-full py-[700px]">
           <h1 className="text-7xl font-bold   mt-[-30%]">My Works</h1>
 
           <ul>

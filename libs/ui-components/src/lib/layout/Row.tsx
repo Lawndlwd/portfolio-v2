@@ -1,8 +1,10 @@
 import styled from '@emotion/styled'
+import { MotionProps, motion } from 'framer-motion'
 import type { CSSProperties, ReactNode } from 'react'
 
-type StyledRowProps = Pick<RowProps, 'gap' | 'templateColumns' | 'alignItems'>
-export const StyledRow = styled('div', {
+type StyledRowProps = Pick<RowProps, 'gap' | 'templateColumns' | 'alignItems'> &
+  MotionProps
+export const StyledRow = styled(motion.div, {
   shouldForwardProp: prop =>
     !['templateColumns', 'gap', 'alignItems'].includes(prop),
 })<StyledRowProps>`

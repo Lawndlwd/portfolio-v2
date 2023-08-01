@@ -6,7 +6,7 @@ import { Stack } from '@portfolio/ui-components'
 
 const BoxStyled = styled(Stack)`
   width: 100%;
-  max-height: 250px;
+  max-height: 350px;
   height: 100%;
   padding: 12px;
   position: relative;
@@ -80,15 +80,13 @@ export const NavItem = ({
 
   return (
     <BoxStyled
-      layoutId={`heading-${title}`}
-      layout="position"
       className={`${className}`}
       ref={subtitleContainerRef}
       whileHover={{
-        scale: 0.95,
+        scale: 0.99,
       }}
       transition={{
-        duration: 0.3,
+        duration: 0.2,
         ease: 'linear',
       }}
       onMouseEnter={() => {
