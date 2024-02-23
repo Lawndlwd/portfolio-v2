@@ -24,13 +24,7 @@ jobs:
           path: dist
 
       - name: Deploy to SSH Instance
-        uses: ssh-actions/ssh-run@v2
-        env:
-          DEPLOY_HOST: ${{ secrets.SSH_HOST }} # Replace with your SSH hostname
-          DEPLOY_USER: ${{ secrets.SSH_USER }} # Replace with your SSH username
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }} # This secret stores your private key
-          TARGET_DIR: '/var/www/html' # Replace with your deployment directory
         run: |
-          cd ${{ env.TARGET_DIR }}
-          wget https://actions.githubusercontent.com/workflows/downloads/.../$ARTIFACT_NAME-0.tar.gz # Replace with artifact download URL
-          tar -xvf $ARTIFACT_NAME-0.tar.gz
+          scp -i ${{ secrets.DEPLOY_KEY }} -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ env.TARGET_DIR }}
+        env:
+          TARGET_DIR: '/var/www/html'
