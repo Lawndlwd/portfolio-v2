@@ -45,7 +45,7 @@ export const Preview = () => {
     >
       <div className="relative">
         <div
-          className="fixed  z-50 top-10 right-10 border border-white rounded-full p-5 bg-blue-700 hover:bg-blue-800 cursor-pointer"
+          className="fixed  z-50 top-10 right-10 border border-white rounded-full p-5 bg-black hover:bg-gray-950 cursor-pointer"
           onClick={() => navigate('/')}
         >
           <ArrowLeftIcon width={44} height={44} />
@@ -179,9 +179,7 @@ export const Preview = () => {
             </motion.ul>
           </div>
         </div>
-        <div className="text-end h-[30rem]">
-          <h1 className="text-[3rem] superBold  mt-[9rem]">{work.name}</h1>
-        </div>
+        <div className="text-end h-[30rem]" />
       </div>
     </div>
   )
