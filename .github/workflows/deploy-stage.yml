@@ -18,12 +18,6 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Deploy to SSH Instance
-        run: |
-          scp -i ${{ secrets.DEPLOY_KEY }} -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ env.TARGET_DIR }}
-        env:
-          TARGET_DIR: '/var/www/html'
-
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
