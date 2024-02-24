@@ -18,7 +18,7 @@ jobs:
       - name: Build React app
         run: npm run build
 
-      - name: Copy dist to VPS
+      - name: Copy dist over ssh
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
