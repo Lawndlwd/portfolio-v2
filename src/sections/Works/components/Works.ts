@@ -24,6 +24,7 @@ const works = [
         'It is deployed on Vercel and utilizes Algolia Search and Google Maps APIs, along with Stripe for payment processing.',
         'The app serves as a training exercise, modeled after Airbnb, allowing users to search for accommodations based on location and time.',
       ],
+      features: [],
     },
     problemStatement: {
       name: 'Problem Statement:',
@@ -63,15 +64,15 @@ const works = [
     learning: [
       {
         title: 'Integration of Multiple APIs:',
-        desc: 'Integrating various APIs such as Algolia for search functionality, Strapi for payment processing, and Google Maps for location services presented a significant challenge. Each API has its own  documentation, authentication methods, and usage patterns, requiring careful coordination and implementation.',
+        desc: 'Combining Algolia, Strapi, and Google Maps APIs proved complex due to their diverse requirements and implementation specifics.',
       },
       {
         title: 'Complex UI Features:',
-        desc: 'Implementing complex UI features to mimic the functionality of a platform like Airbnb was challenging. Designing intuitive user interfaces for property listings, map interactions, and booking flows while maintaining responsiveness across different devices required meticulous planning and implementation.',
+        desc: "Replicating Airbnb's UI features—property listings, maps, and booking flows—across devices demanded meticulous design and implementation.",
       },
       {
         title: 'Technical Insights Gained:',
-        desc: 'Building LevoBNB provided invaluable technical insights into web development using Vue.js and associated libraries and frameworks. Understanding how to leverage Vue.js for building dynamic and interactive user interfaces, along with integrating third-party APIs and services, enhanced my proficiency in full-stack development.',
+        desc: "LevoBNB's Vue.js development honed my full-stack skills, combining UI creation, API integration, and Vue.js expertise.",
       },
     ],
   },
@@ -82,9 +83,27 @@ const works = [
     projectOverview: {
       name: 'Project Overview:',
       desc: [
-        'web application built using Nuxt.js with Vue, incorporating TypeScript and plain CSS.',
-        'It is deployed on Vercel and utilizes Algolia Search and Google Maps APIs, along with Stripe for payment processing.',
-        'The app serves as a training exercise, modeled after Airbnb, allowing users to search for accommodations based on location and time.',
+        'This web application empowers traders to track their activity and analyze performance effectively. Built with Next.js, Tailwind CSS, TypeScript, and TradingView integration, it offers a comprehensive suite of features:',
+        'This project showcases my expertise in building modern web applications using cutting-edge technologies and APIs. It demonstrates my understanding of the needs of traders and my ability to deliver solutions that empower them to make informed decisions and achieve their financial goals.',
+      ],
+      features: [
+        {
+          name: 'Trade Recording',
+          desc: 'Log trades with ease, including details like entry/exit prices, symbols, and strategies.',
+        },
+        {
+          name: 'Note Taking',
+          desc: 'Annotate trades with insights, observations, screenshot and lessons learned.',
+        },
+
+        {
+          name: 'Performance Charts',
+          desc: 'Gain visual insights into your trading performance through interactive charts.',
+        },
+        {
+          name: 'Trade Statistics',
+          desc: 'Analyze key metrics like win/loss rate, average return, and drawdown to identify strengths and areas for improvement.',
+        },
       ],
     },
     problemStatement: {
@@ -123,16 +142,16 @@ const works = [
     ],
     learning: [
       {
-        title: 'Integration of Multiple APIs:',
-        desc: 'Integrating various APIs such as Algolia for search functionality, Strapi for payment processing, and Google Maps for location services presented a significant challenge. Each API has its own  documentation, authentication methods, and usage patterns, requiring careful coordination and implementation.',
+        title: 'Next.js & Fastify API:',
+        desc: 'Combined SSR with serverless API routes for flexibility and scalability.',
       },
       {
-        title: 'Complex UI Features:',
-        desc: 'Implementing complex UI features to mimic the functionality of a platform like Airbnb was challenging. Designing intuitive user interfaces for property listings, map interactions, and booking flows while maintaining responsiveness across different devices required meticulous planning and implementation.',
+        title: 'TradingView & Visx Charts',
+        desc: 'Integrated advanced charting and custom visualizations for data exploration.',
       },
       {
-        title: 'Technical Insights Gained:',
-        desc: 'Building LevoBNB provided invaluable technical insights into web development using Vue.js and associated libraries and frameworks. Understanding how to leverage Vue.js for building dynamic and interactive user interfaces, along with integrating third-party APIs and services, enhanced my proficiency in full-stack development.',
+        title: 'GitLab CI/CD:',
+        desc: 'Automated deployment to Scaleway servers for streamlined workflow.',
       },
     ],
   },
@@ -143,10 +162,10 @@ const works = [
     projectOverview: {
       name: 'Project Overview:',
       desc: [
-        'web application built using Nuxt.js with Vue, incorporating TypeScript and plain CSS.',
-        'It is deployed on Vercel and utilizes Algolia Search and Google Maps APIs, along with Stripe for payment processing.',
-        'The app serves as a training exercise, modeled after Airbnb, allowing users to search for accommodations based on location and time.',
+        'Personal portfolio website showcases my projects and experiences in a visually engaging and interactive manner. Built with React, Framer Motion, and Tailwind CSS,',
+        'Inspired by award-winning portfolios out there.',
       ],
+      features: [],
     },
     problemStatement: {
       name: 'Problem Statement:',
@@ -183,16 +202,8 @@ const works = [
     ],
     learning: [
       {
-        title: 'Integration of Multiple APIs:',
-        desc: 'Integrating various APIs such as Algolia for search functionality, Strapi for payment processing, and Google Maps for location services presented a significant challenge. Each API has its own  documentation, authentication methods, and usage patterns, requiring careful coordination and implementation.',
-      },
-      {
-        title: 'Complex UI Features:',
-        desc: 'Implementing complex UI features to mimic the functionality of a platform like Airbnb was challenging. Designing intuitive user interfaces for property listings, map interactions, and booking flows while maintaining responsiveness across different devices required meticulous planning and implementation.',
-      },
-      {
-        title: 'Technical Insights Gained:',
-        desc: 'Building LevoBNB provided invaluable technical insights into web development using Vue.js and associated libraries and frameworks. Understanding how to leverage Vue.js for building dynamic and interactive user interfaces, along with integrating third-party APIs and services, enhanced my proficiency in full-stack development.',
+        title: 'Animation with Farmer motion',
+        desc: 'Learning animation with Framer Motion is best done through hands-on projects, such as your own portfolio. This approach has not only taught me the basics but also some advanced techniques.',
       },
     ],
   },

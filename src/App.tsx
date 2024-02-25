@@ -3,8 +3,11 @@ import { Feedbacks, Hero, Skills, Works, Footer } from './sections'
 import { cn } from './lib/utils'
 import { buttonVariants } from './components'
 import { Link1Icon } from '@radix-ui/react-icons'
+import { useIsMobile } from './hooks/useIsMobile'
 
 export const App = () => {
+  const isMobile = useIsMobile()
+
   return (
     <div
       id="wrapper"
@@ -18,8 +21,8 @@ export const App = () => {
           <Feedbacks />
         </div>
         <Footer />
-        <div className="fixed bottom-5 right-5 w-[200px]">
-          <div className="flex flex-col gap-5">
+        <div className="fixed bottom-5 md:right-5 md:w-[200px] px-10 md:p-0">
+          <div className="flex md:flex-col md:gap-5">
             <Link
               to="https://twitter.com/levende_"
               target="_blank"
@@ -30,7 +33,9 @@ export const App = () => {
             >
               X / Twitter
               <Link1Icon />
-              <div className="border-b w-10 items-start h-4" />
+              {isMobile ? null : (
+                <div className="border-b invisible md:visible w-10 items-start h-4" />
+              )}
             </Link>
             <Link
               to="https://www.linkedin.com/in/levend-mohammad/"
@@ -41,7 +46,9 @@ export const App = () => {
               )}
             >
               LinkedIn <Link1Icon />
-              <div className="border-b w-10 items-start h-4" />
+              {isMobile ? null : (
+                <div className="border-b invisible md:visible w-10 items-start h-4" />
+              )}
             </Link>
             <Link
               to="https://github.com/Lawndlwd"
@@ -52,7 +59,9 @@ export const App = () => {
               )}
             >
               GitHub <Link1Icon />
-              <div className="border-b w-10 items-start h-4" />
+              {isMobile ? null : (
+                <div className="border-b invisible md:visible w-10 items-start h-4" />
+              )}
             </Link>
           </div>
         </div>

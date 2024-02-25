@@ -1,10 +1,11 @@
 import { cn } from '@/lib/utils'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button, Separator } from '@/components'
 import { Link1Icon, ArrowLeftIcon } from '@radix-ui/react-icons'
 import works from './Works'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const fadeInVariants = {
   initial: {
@@ -32,8 +33,12 @@ export const Preview = () => {
     offset: ['start end', 'end start'],
   })
 
-  const lg = useTransform(scrollYProgress, [0, 1], ['0%', '-200%'])
-  const xl = useTransform(scrollYProgress, [0, 1], ['0%', '-350%'])
+  const lg = useTransform(scrollYProgress, [0, 1], ['40%', '-100%'])
+  const xl = useTransform(scrollYProgress, [0, 1], ['40%', '-150%'])
+  const isMobile = useIsMobile()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (!work) return null
 
@@ -45,14 +50,14 @@ export const Preview = () => {
     >
       <div className="relative">
         <div
-          className="fixed  z-50 top-10 right-10 border border-white rounded-full p-5 bg-black hover:bg-gray-950 cursor-pointer"
+          className="fixed  z-50 md:top-10 top-3 md:right-10 right-3 border border-white rounded-full md:p-5 p-2 bg-black hover:bg-gray-950 cursor-pointer"
           onClick={() => navigate('/')}
         >
-          <ArrowLeftIcon width={44} height={44} />
+          <ArrowLeftIcon className="w-4 h-4 md:w-8 md:h-8" />
         </div>
         <img
           src={work.images.find(({ name }) => name === 'heading')?.src ?? ''}
-          className="rounded-xl filter brightness-[35%]"
+          className="rounded-b-2xl  filter brightness-[35%] object-cover	 md:h-auto h-96 "
         />
         <div className="  mx-auto relative ">
           <p
@@ -67,24 +72,9 @@ export const Preview = () => {
           </p>
         </div>
 
-        <div className="w-[1200px] mx-auto flex flex-col gap-10 ">
-          <div className="grid grid-cols-12 items-start gap-2  mt-48">
-            <div className="col-span-9 flex flex-col gap-10 ">
-              <h2 className="text-[2rem] font-bold">
-                {work.projectOverview.name}
-              </h2>
-
-              <div className="flex flex-col gap-5">
-                {work.projectOverview.desc.map((desc) => (
-                  <p key={desc} className="text-2xl   ">
-                    {desc}
-                  </p>
-                ))}
-              </div>
-            </div>
-            <Separator orientation="vertical" />
-
-            <div className="flex flex-col gap-5 col-span-2">
+        <div className="md:w-[1200px] p-8 md:p-2 mx-auto flex flex-col gap-10 ">
+          <div className="md:grid md:grid-cols-12 flex flex-col items-start gap-2  md:mt-48">
+            <div className="flex flex-col gap-5 col-span-2 md:order-last">
               <div>
                 <h2 className="font-bold">Website</h2>
 
@@ -109,30 +99,56 @@ export const Preview = () => {
                 </p>
               </div>
             </div>
+            <Separator
+              orientation={isMobile ? 'horizontal' : 'vertical'}
+              className="md:order-2 md:my-0 my-5"
+            />
+            <div className="col-span-9 flex flex-col gap-10 ">
+              <h2 className="text-[2rem] font-bold">
+                {work.projectOverview.name}
+              </h2>
+
+              <div className="flex flex-col gap-5">
+                {work.projectOverview.desc.map((desc) => (
+                  <p key={desc} className="md:text-xl   ">
+                    {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="mt-5 flex flex-col gap-10">
-            <h2 className="text-[2rem] font-bold   ">
+            {/* <h2 className="text-[2rem] font-bold   ">
               {work.problemStatement.name}
             </h2>
             {work.problemStatement.desc.map((desc) => (
-              <p key={desc} className="text-2xl">
+              <p key={desc} className="md:text-2xl">
                 {desc}
               </p>
-            ))}
+            ))} */}
+
+            <ul className=" flex md:flex-row flex-col gap-5   ">
+              {work.projectOverview.features.map(({ name, desc }) => (
+                <li key={name} className="md:text-xl   p-5">
+                  <p className="font-bold mb-5">{name}</p>
+                  {desc}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="relative">
-            <h2 className="text-[2rem] font-bold mb-40  ">
+            <h2 className="text-[2rem] font-bold mb-16  ">
               Screenshots and Demos:
             </h2>
 
-            <div ref={container}>
+            <div ref={container} className="md:block flex flex-col gap-2">
               {work.images.map(({ name, src }) =>
                 name !== 'heading' ? (
                   <motion.div
                     key={name}
                     style={{
                       y:
-                        name === 'landing'
+                        name === 'landing' || isMobile
                           ? undefined
                           : name === 'mobile'
                           ? lg
@@ -142,12 +158,14 @@ export const Preview = () => {
                     <motion.img
                       src={src}
                       className={cn(
-                        name === 'landing' ? 'rounded-xl scale-125' : undefined,
-                        name === 'mobile'
-                          ? 'mt-[10%] -ml-[30%] top rounded-xl w-[400px]'
+                        name === 'landing' && !isMobile
+                          ? 'rounded-xl '
                           : undefined,
-                        name === 'section'
-                          ? '-mt-[30%] ml-[40%] rounded-xl w-full '
+                        name === 'mobile' && !isMobile
+                          ? '-mt-[10%] -ml-[20%] top rounded-xl w-[400px]'
+                          : undefined,
+                        name === 'section' && !isMobile
+                          ? '-mt-[70%] ml-[20%] rounded-xl w-full '
                           : undefined,
                         ''
                       )}
@@ -157,19 +175,19 @@ export const Preview = () => {
               )}
             </div>
           </div>
-          <div className="-mt-[40%]">
+          <div className="mt-[40%] md:mt-0">
             <h2 className="text-[2rem] font-bold my-16">
               Challenges & Lessons Learned:
             </h2>
 
-            <motion.ul className=" flex gap-5">
+            <motion.ul className=" flex md:flex-row flex-col gap-5   ">
               {work.learning.map(({ title, desc }) => (
                 <motion.li
                   key={title}
                   variants={fadeInVariants}
                   initial="initial"
                   whileInView="animate"
-                  className="text-2xl border border-white p-5"
+                  className="md:text-xl border border-white p-5"
                   viewport={{ once: true }}
                 >
                   <p className="font-bold mb-5">{title}</p>

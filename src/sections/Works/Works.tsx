@@ -6,6 +6,8 @@ import levobnb from '@/assets/levo.png'
 import taccuinu from '@/assets/tacc.png'
 
 import portfolio from '@/assets/prot.png'
+import { cn } from '@/lib/utils'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const works = [
   {
@@ -30,18 +32,24 @@ const works = [
 export const Works = () => {
   const navigate = useNavigate()
   const [item, setItem] = useState<string | undefined>(undefined)
+  const isMobile = useIsMobile()
 
   return (
     <div className="mx-auto mt-[-40%] max-w-[1700px]">
-      <h1 className="text-7xl font-black">Works</h1>
+      <h1 className="md:text-7xl text-3xl text-center font-black">Works</h1>
       <div className="flex w-full items-center gap-40">
         <div className="flex w-[80%] flex-col py-[14%]">
-          <ul className="list-transform gap-18 flex flex-col">
+          <ul
+            className={cn(
+              'gap-18 flex flex-col',
+              isMobile ? 'list-transform-mobile' : 'list-transform'
+            )}
+          >
             {works.map(({ title, id, date }) => (
               <li
                 className="work-title  border-t-2"
                 key={id}
-                onClick={() => navigate(`/works/${id}`)}
+                onClick={() => navigate(`/works/${id}`, { replace: true })}
                 onMouseOver={() => setItem(id)}
                 onMouseLeave={() => setItem(undefined)}
               >

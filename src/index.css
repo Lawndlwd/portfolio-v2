@@ -11,6 +11,15 @@
   margin: 0;
 }
 
+.list-transform-mobile {
+  transform: perspective(100vw) rotateY(19deg) translateZ(0px) scale(1.2);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  padding: 50px;
+  margin: 0;
+}
+
 .superBold {
   position: relative;
   text-decoration: none;

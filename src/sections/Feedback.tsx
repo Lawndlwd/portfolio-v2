@@ -3,6 +3,7 @@ import { MutableRefObject, useRef } from 'react'
 import Francois from '@/assets/Franco.webp'
 import Sharanya from '@/assets/shar.webp'
 import Karim from '@/assets/Karim.webp'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const feedbacks = [
   {
@@ -13,7 +14,11 @@ const feedbacks = [
     potision: 'Backend Software Engineer',
     scale: [
       [0.2, 0.28, 0.9],
-      ['-32%', '-100%', '-232%'],
+      ['-0%', '-100%', '-200%'],
+    ],
+    scaleMobile: [
+      [0.2, 0.28, 0.9],
+      ['20%', '-100%', '-240%'],
     ],
     image: Francois,
   },
@@ -25,7 +30,11 @@ const feedbacks = [
     potision: 'Identity Verification | Authentication | Digital identity',
     scale: [
       [0.2, 0.28, 0.9],
-      ['-32%', '-100%', '-232%'],
+      ['-0%', '-100%', '-200%'],
+    ],
+    scaleMobile: [
+      [0.2, 0.28, 0.9],
+      ['20%', '-100%', '-240%'],
     ],
     image: Sharanya,
   },
@@ -37,7 +46,11 @@ const feedbacks = [
     potision: 'Lead Instructor',
     scale: [
       [0.2, 0.28, 0.9],
-      ['-32%', '-100%', '-232%'],
+      ['-0%', '-100%', '-200%'],
+    ],
+    scaleMobile: [
+      [0.2, 0.28, 0.9],
+      ['20%', '-100%', '-240%'],
     ],
     image: Karim,
   },
@@ -47,6 +60,7 @@ type FeedbacksItemProps = {
   id: string
   potision: string
   scale: (number[] | string[])[]
+  scaleMobile: (number[] | string[])[]
   owner: string
   targetRef: MutableRefObject<HTMLDivElement | null>
   image: string
@@ -58,14 +72,19 @@ function FeedbacksItem({
   scale,
   targetRef,
   image,
+  scaleMobile,
 }: FeedbacksItemProps) {
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start end', 'end end'],
   })
-
-  // @ts-expect-error type error
-  const textScale = useTransform(scrollYProgress, scale[0], scale[1])
+  const isMobile = useIsMobile()
+  const textScale = useTransform(
+    scrollYProgress,
+    // @ts-expect-error type error
+    isMobile ? scaleMobile[0] : scale[0],
+    isMobile ? scaleMobile[1] : scale[1]
+  )
 
   return (
     <motion.div
@@ -73,24 +92,23 @@ function FeedbacksItem({
         y: '10%',
         x: textScale,
       }}
-      className="flex   items-center gap-48  p-24 w-screen justify-center"
+      className="flex max-h-[100vh] md:max-h-[50vh] w-screen  flex-col md:flex-row  items-center gap-24   md:p-24  justify-center"
     >
-      <div className="max-h-[50vh] max-w-[56vw] ">
-        <p className="text-foreground text-[3vw] font-bold leading-[8rem] -tracking-wide  ">
+      <div className=" md:max-w-[76vw] max-w-[80vw] ">
+        <p className="text-foreground md:text-[3vw] text-[6vw] font-bold md:leading-[7rem] -tracking-wide  ">
           <b className="text-secondary-ts relative inline-block ">“</b>
           {title}
         </p>
       </div>
-      <div className="  h-auto  w-[10vw]  flex-col items-center justify-center  gap-32  ">
+      <div className=" w-[80vw] flex  md:flex-col flex-row  md:gap-5 gap-5 ">
         <img
           src={image}
           alt="levende"
-          className="rounded-full block "
-          width={300}
+          className="rounded-full block md:w-[200px] w-16 "
         />
-        <p className="text-xl font-bold self-center  ">
+        <p className="md:text-xl w-1/2 font-bold   ">
           {owner}
-          <p>{potision}</p>
+          <p className="md:text-sm font-normal">{potision}</p>
         </p>
       </div>
     </motion.div>
@@ -103,23 +121,28 @@ export const Feedbacks = () => {
   return (
     <motion.section
       ref={targetRef}
-      className=" h-[300vh] max-w-[1700px] mx-auto  "
+      className="h-[300vh] max-w-[1700px] mx-auto  "
     >
-      <div className="sticky top-1/2   mt-[80vh]  flex  h-[80vh] max-w-[1700px]  -translate-y-1/2 ">
-        <h1 className="text-7xl font-black mb-24 max-w-[700px]">Feedbacks</h1>
-        <div className="flex">
-          {feedbacks.map(({ title, scale, owner, potision, id, image }) => (
-            <FeedbacksItem
-              image={image}
-              targetRef={targetRef}
-              key={id}
-              title={title}
-              id={id}
-              potision={potision}
-              scale={scale}
-              owner={owner}
-            />
-          ))}
+      <div className="sticky top-1/2   md:mt-[80vh] mt-[120vh]    h-[80vh] max-w-[1700px]  -translate-y-1/2 ">
+        <h1 className="md:text-7xl text-3xl font-black mb-24 w-full   text-center ">
+          Feedbacks
+        </h1>
+        <div className="flex md:gap-1 gap-24">
+          {feedbacks.map(
+            ({ title, scale, owner, potision, id, image, scaleMobile }) => (
+              <FeedbacksItem
+                image={image}
+                targetRef={targetRef}
+                key={id}
+                title={title}
+                id={id}
+                potision={potision}
+                scale={scale}
+                scaleMobile={scaleMobile}
+                owner={owner}
+              />
+            )
+          )}
         </div>
       </div>
     </motion.section>
