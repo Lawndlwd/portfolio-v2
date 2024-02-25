@@ -219,7 +219,7 @@ function FeedbacksItem({ title, owner, potision, image }: FeedbacksItemProps) {
 
 export const Feedbacks = () => {
   return (
-    <section className="mt-[600px] md:mt-[400px] max-w-[1700px] mx-auto  ">
+    <section className="mt-[800px] md:mt-[400px] max-w-[1700px] mx-auto  ">
       <div className="max-w-[1700px]">
         <h1 className="md:text-7xl text-3xl font-black mb-24 w-full   text-center ">
           Feedbacks
