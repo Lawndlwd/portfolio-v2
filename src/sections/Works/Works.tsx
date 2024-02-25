@@ -2,10 +2,10 @@ import { motion } from 'framer-motion'
 import { WorksTitle } from './components'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import levobnb from '@/assets/levo.png'
-import taccuinu from '@/assets/tacc.png'
+import levobnb from '@/assets/levo.webp'
+import taccuinu from '@/assets/tacc.webp'
 
-import portfolio from '@/assets/prot.png'
+import portfolio from '@/assets/prot.webp'
 import { cn } from '@/lib/utils'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -60,7 +60,7 @@ export const Works = () => {
             ))}
           </ul>
         </div>
-        {item ? (
+        {item && !isMobile ? (
           <motion.div className=" relative  w-full">
             {works.map(({ id, img, title }) => (
               <div className="absolute rounded-3xl -top-[15rem] right-0  w-[600px] h-[600px] border">

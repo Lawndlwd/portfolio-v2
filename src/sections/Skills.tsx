@@ -2,7 +2,7 @@
 import { useScroll, useTransform, motion } from 'framer-motion'
 import { useRef } from 'react'
 
-import code from '@/assets/code.png'
+import code from '@/assets/code.webp'
 import { Separator } from '@/components'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -13,23 +13,24 @@ export const Skills = () => {
     target: extendedRef,
     offset: ['start end', 'end end'],
   })
+  const isMobile = useIsMobile()
+
   const opacity = useTransform(
     scrollYProgress,
     [0.17, 0.35, 0.75, 0.99, 1],
-    [0, 0.8, 0.9, 1, 0.9]
+    [isMobile ? 0.8 : 0, 0.8, 0.9, 1, 0.9]
   )
-  const isMobile = useIsMobile()
 
   const scale = useTransform(
     scrollYProgress,
     [0.3, 0.45, 0.75],
-    [isMobile ? 0.7 : 0.4, 0.9, 1]
+    [isMobile ? 0.96 : 0.4, isMobile ? 0.96 : 0.9, 1]
   )
 
   return (
     <section id="exp" className="relative h-[800px]">
       <div className="">
-        <h1 className="md:text-7xl text-3xl font-black md:mb-24 max-w-[700px] text-center">
+        <h1 className="md:text-7xl text-3xl font-black md:mb-24 mb-10 max-w-[700px] text-center">
           Expertises
         </h1>
 

@@ -5,7 +5,7 @@ export const Footer = () => {
   const isMobile = useIsMobile()
 
   return (
-    <div className="md:h-[500px] bg-slate-200 rounded-3xl  md:w-[1700px] mx-auto mb-56 md:-mt-[400px] -mt-[200px]  shadow-lg p-5">
+    <div className="md:h-[500px] bg-slate-200 rounded-3xl mt-48   md:w-[1700px] mx-auto mb-56  shadow-lg p-5">
       <p
         className={cn(
           'text-black  text-center    font-black  ',

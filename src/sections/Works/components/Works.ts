@@ -1,17 +1,17 @@
-import AirbnbHeading from '@/assets/levo-bnb/heading.png'
-import AirbnbIphone from '@/assets/levo-bnb/iphone.png'
-import AirbnbSection from '@/assets/levo-bnb/section-1.png'
-import AirbnbLanding from '@/assets/levo-bnb/landing.png'
+import AirbnbHeading from '@/assets/levo-bnb/heading.webp'
+import AirbnbIphone from '@/assets/levo-bnb/iphone.webp'
+import AirbnbSection from '@/assets/levo-bnb/section-1.webp'
+import AirbnbLanding from '@/assets/levo-bnb/landing.webp'
 
 import taccuinuHeading from '@/assets/taccuinu/heading.png'
 import taccuinuIphone from '@/assets/taccuinu/mobile.png'
 import taccuinuSection from '@/assets/taccuinu/section.png'
 import taccuinuLanding from '@/assets/taccuinu/landing.png'
 
-import portfolioHeading from '@/assets/portfolio/heading.png'
-import portfolioIphone from '@/assets/portfolio/mobile.png'
-import portfolioSection from '@/assets/portfolio/section.png'
-import portfolioLanding from '@/assets/portfolio/landing.png'
+import portfolioHeading from '@/assets/portfolio/heading.webp'
+import portfolioIphone from '@/assets/portfolio/mobile.webp'
+import portfolioSection from '@/assets/portfolio/section.webp'
+import portfolioLanding from '@/assets/portfolio/landing.webp'
 const works = [
   {
     link: 'https://levo-bnb.vercel.app',
