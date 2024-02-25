@@ -10,33 +10,30 @@ export const App = () => {
   const isMobile = useIsMobile()
 
   return (
-    <>
+    <div
+      id="wrapper"
+      className="montserrat-lawand font-montserrat bg-background relative start-0 z-10 w-full overflow-x-clip"
+    >
       <Routes>
         <Route
           index
-          path={'/'}
+          path="/"
           element={
             <div
-              id="wrapper"
-              className="montserrat-lawand font-montserrat bg-background relative start-0 z-10 w-full overflow-x-clip"
+              id="content"
+              className="relative z-10 h-full w-full overflow-x-clip"
             >
-              <div
-                id="content"
-                className="relative z-10 h-full w-full overflow-x-clip"
-              >
-                <Hero />
-                <div className="max-w-[1700px] mx-auto">
-                  <Works />
-                  <Skills />
-                  <Feedbacks />
-                </div>
-                <Footer />
+              <Hero />
+              <div className="max-w-[1700px] mx-auto">
+                <Works />
+                <Skills />
+                <Feedbacks />
               </div>
+              <Footer />
             </div>
           }
         />
-
-        <Route index path={'/works/:id'} element={<Preview />} />
+        <Route index path="/works/:id" element={<Preview />} />
       </Routes>
       <div className="fixed bottom-5 md:right-5 md:w-[200px] px-10 md:p-0">
         <div className="flex md:flex-col md:gap-5">
@@ -82,6 +79,6 @@ export const App = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
