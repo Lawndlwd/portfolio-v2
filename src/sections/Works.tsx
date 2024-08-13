@@ -30,7 +30,7 @@ export const Works = () => {
         <ul className="gap-18 flex flex-col w-full">
           {works.map(({ title, date }) => (
             <li
-              className="border-y-2 border-foreground py-4 flex items-center justify-between cursor-pointer"
+              className="border-y-2 border-foreground py-4 flex items-center justify-between cursor-pointer hover:text-secondary-ts hover:bg-foreground"
               key={title}
               onClick={() => navigate(`/works/${title}`)}
             >

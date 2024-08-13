@@ -118,15 +118,6 @@ export const Preview = () => {
             </div>
           </div>
           <div className="mt-5 flex flex-col gap-10">
-            {/* <h2 className="text-[2rem] font-bold   ">
-              {work.problemStatement.name}
-            </h2>
-            {work.problemStatement.desc.map((desc) => (
-              <p key={desc} className="md:text-2xl">
-                {desc}
-              </p>
-            ))} */}
-
             <ul className=" flex md:flex-row flex-col gap-5   ">
               {work.projectOverview.features.map(({ name, desc }) => (
                 <li key={name} className="md:text-xl   p-5">
