@@ -1,14 +1,14 @@
-import { App } from './App'
-import { createBrowserRouter } from 'react-router-dom'
-import { Preview } from './sections/Works/components/Preview'
+import { App } from "./App";
+import { createBrowserRouter } from "react-router-dom";
+import { Preview } from "./sections/Preview";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
   },
   {
-    path: 'works/:id',
+    path: "works/:id",
     element: <Preview />,
   },
-])
+]);

@@ -1,8 +1,6 @@
 import { stylesWithCssVar } from '@/lib/motion'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import levende from '@/assets/levende.webp'
-import { useIsMobile } from '@/hooks/useIsMobile'
 
 export const Hero = () => {
   const targetRef = useRef<HTMLDivElement | null>(null)
@@ -10,15 +8,10 @@ export const Hero = () => {
     target: targetRef,
     offset: ['start end', 'end end'],
   })
-  const isMobile = useIsMobile()
 
   const textX = useTransform(scrollYProgress, [0.44, 0.8], ['130%', '-200%'])
   const scale = useTransform(scrollYProgress, [0.5, 0.92], [1, 0.7])
-  const imageX = useTransform(
-    scrollYProgress,
-    [0.5, 0.9],
-    [isMobile ? '-50%' : '-30%', '-200%']
-  )
+ 
 
   const opacityBorder = useTransform(
     scrollYProgress,
@@ -35,12 +28,6 @@ export const Hero = () => {
       ref={targetRef}
       className=" flex h-[200vh] w-screen items-start justify-start"
     >
-      <motion.img
-        alt="levende"
-        src={levende}
-        style={{ x: imageX, y: '-50%' }}
-        className="sticky top-1/2 h-auto w-[80em]   -translate-y-1/2 bg-contain bg-no-repeat mix-blend-luminosity grayscale  filter md:visible  "
-      />
 
       <div className="before:border-secondary-ts dark:before:border-primary sticky left-1/2 top-1/2 md:min-h-[40rem] md:min-w-[40rem] min-h-[30rem]  min-w-[30rem] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap  before:absolute before:inset-0 before:scale-[var(--scale)] before:border-[2.5rem]  before:opacity-[var(--opacity-border)]">
         <motion.p

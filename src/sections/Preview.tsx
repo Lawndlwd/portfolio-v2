@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Button, Separator } from '@/components'
-import { Link1Icon, ArrowLeftIcon } from '@radix-ui/react-icons'
-import works from './Works'
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { cn } from "@/lib/utils";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Button, Separator } from "@/components";
+import { Link1Icon, ArrowLeftIcon } from "@radix-ui/react-icons";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import works from "@/Works";
 
 const fadeInVariants = {
   initial: {
@@ -17,46 +17,46 @@ const fadeInVariants = {
     y: 0,
     transition: {},
   },
-}
+};
 
-type PreviewRouteProps = { id: string | undefined }
+type PreviewRouteProps = { id: string | undefined };
 
 export const Preview = () => {
-  const { id: dialogOpen } = useParams<PreviewRouteProps>()
-  const work = works.find(({ id }) => id === dialogOpen)
-  const container = useRef(null)
-  const navigate = useNavigate()
-  const ref = useRef(null)
+  const { id: dialogOpen } = useParams<PreviewRouteProps>();
+  const work = works.find(({ name }) => name === dialogOpen);
+  const container = useRef(null);
+  const navigate = useNavigate();
+  const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start end', 'end start'],
-  })
+    offset: ["start end", "end start"],
+  });
 
-  const lg = useTransform(scrollYProgress, [0, 1], ['40%', '-100%'])
-  const xl = useTransform(scrollYProgress, [0, 1], ['40%', '-150%'])
-  const isMobile = useIsMobile()
+  const lg = useTransform(scrollYProgress, [0, 1], ["40%", "-100%"]);
+  const xl = useTransform(scrollYProgress, [0, 1], ["40%", "-150%"]);
+  const isMobile = useIsMobile();
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
-  if (!work) return null
+  if (!work) return null;
 
   return (
     <div
       className={cn(
-        'inset-0 flex h-full w-full items-center  justify-center  rounded-xl'
+        "inset-0 flex h-full w-full items-center  justify-center  rounded-xl"
       )}
     >
       <div className="relative">
         <div
           className="fixed  z-50 md:top-10 top-3 md:right-10 right-3 border border-white rounded-full md:p-5 p-2 bg-black hover:bg-gray-950 cursor-pointer"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
         >
           <ArrowLeftIcon className="w-4 h-4 md:w-8 md:h-8" />
         </div>
         <img
-          src={work.images.find(({ name }) => name === 'heading')?.src ?? ''}
+          src={work.images.find(({ name }) => name === "heading")?.src ?? ""}
           className="rounded-b-2xl  filter brightness-[35%] object-cover	 md:h-auto h-96 "
         />
         <div className="  mx-auto relative ">
@@ -65,7 +65,7 @@ export const Preview = () => {
             id="preview-title"
             data-text={work.name}
             className={cn(
-              'text-black superBold -mt-[5%] text-center text-transparent bg-clip-text size'
+              "text-black superBold -mt-[5%] text-center text-transparent bg-clip-text size"
             )}
           >
             {work.name}
@@ -92,7 +92,7 @@ export const Preview = () => {
                     <span key={technologie}>
                       {technologie}
                       <span>
-                        {work.technologies.length - 1 === index ? '.' : ', '}
+                        {work.technologies.length - 1 === index ? "." : ", "}
                       </span>
                     </span>
                   ))}
@@ -100,7 +100,7 @@ export const Preview = () => {
               </div>
             </div>
             <Separator
-              orientation={isMobile ? 'horizontal' : 'vertical'}
+              orientation={isMobile ? "horizontal" : "vertical"}
               className="md:order-2 md:my-0 my-5"
             />
             <div className="col-span-9 flex flex-col gap-10 ">
@@ -143,14 +143,14 @@ export const Preview = () => {
 
             <div ref={container} className="md:block flex flex-col gap-2">
               {work.images.map(({ name, src }) =>
-                name !== 'heading' ? (
+                name !== "heading" ? (
                   <motion.div
                     key={name}
                     style={{
                       y:
-                        name === 'landing' || isMobile
+                        name === "landing" || isMobile
                           ? undefined
-                          : name === 'mobile'
+                          : name === "mobile"
                           ? lg
                           : xl,
                     }}
@@ -158,16 +158,16 @@ export const Preview = () => {
                     <motion.img
                       src={src}
                       className={cn(
-                        name === 'landing' && !isMobile
-                          ? 'rounded-xl '
+                        name === "landing" && !isMobile
+                          ? "rounded-xl "
                           : undefined,
-                        name === 'mobile' && !isMobile
-                          ? '-mt-[10%] -ml-[20%] top rounded-xl w-[400px]'
+                        name === "mobile" && !isMobile
+                          ? "-mt-[10%] -ml-[20%] top rounded-xl w-[400px]"
                           : undefined,
-                        name === 'section' && !isMobile
-                          ? '-mt-[70%] ml-[20%] rounded-xl w-full '
+                        name === "section" && !isMobile
+                          ? "-mt-[70%] ml-[20%] rounded-xl w-full "
                           : undefined,
-                        ''
+                        ""
                       )}
                     />
                   </motion.div>
@@ -200,5 +200,5 @@ export const Preview = () => {
         <div className="text-end h-[30rem]" />
       </div>
     </div>
-  )
-}
+  );
+};

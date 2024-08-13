@@ -1,13 +1,13 @@
-import { Link, Route, Routes } from 'react-router-dom'
-import { Feedbacks, Hero, Skills, Works, Footer } from './sections'
-import { cn } from './lib/utils'
-import { buttonVariants } from './components'
-import { Link1Icon } from '@radix-ui/react-icons'
-import { useIsMobile } from './hooks/useIsMobile'
-import { Preview } from './sections/Works/components'
+import { Link, Route, Routes } from "react-router-dom";
+import { Feedbacks, Hero, Skills, Works, Footer } from "./sections";
+import { cn } from "./lib/utils";
+import { buttonVariants } from "./components";
+import { Link1Icon } from "@radix-ui/react-icons";
+import { useIsMobile } from "./hooks/useIsMobile";
+import { Preview } from "./sections/Preview";
 
 export const App = () => {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
     <div
@@ -24,7 +24,7 @@ export const App = () => {
               className="relative z-10 h-full w-full overflow-x-clip"
             >
               <Hero />
-              <div className="max-w-[1700px] mx-auto">
+              <div className="max-w-[1700px] flex flex-col gap-24 mx-auto px-4 ">
                 <Works />
                 <Skills />
                 <Feedbacks />
@@ -35,14 +35,14 @@ export const App = () => {
         />
         <Route index path="/works/:id" element={<Preview />} />
       </Routes>
-      <div className="fixed bottom-5 md:right-5 md:w-[200px] px-10 md:p-0">
+      <div className="fixed bottom-5 md:right-5 md:w-[200px] px-10 md:p-0 z-10">
         <div className="flex md:flex-col md:gap-5">
           <Link
             to="https://twitter.com/levende_"
             target="_blank"
             className={cn(
-              'flex gap-1 font-bold',
-              buttonVariants({ variant: 'link' })
+              buttonVariants({ variant: "link" }),
+              "flex gap-1 font-bold text-[#00BFFF]"
             )}
           >
             X / Twitter
@@ -55,8 +55,8 @@ export const App = () => {
             to="https://www.linkedin.com/in/levend-mohammad/"
             target="_blank"
             className={cn(
-              'flex gap-1 font-bold',
-              buttonVariants({ variant: 'link' })
+              buttonVariants({ variant: "link" }),
+              "flex gap-1 font-bold text-[#00BFFF]"
             )}
           >
             LinkedIn <Link1Icon />
@@ -68,8 +68,8 @@ export const App = () => {
             to="https://github.com/Lawndlwd"
             target="_blank"
             className={cn(
-              'flex gap-1 font-bold',
-              buttonVariants({ variant: 'link' })
+              buttonVariants({ variant: "link" }),
+              "flex gap-1 font-bold text-[#00BFFF]"
             )}
           >
             GitHub <Link1Icon />
@@ -80,5 +80,5 @@ export const App = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

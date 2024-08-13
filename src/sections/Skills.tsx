@@ -1,37 +1,37 @@
 // import { Box, Row, Stack } from '@portfolio/ui-components'
-import { useScroll, useTransform, motion } from 'framer-motion'
-import { useRef } from 'react'
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useRef } from "react";
 
-import code from '@/assets/code.webp'
-import { Separator } from '@/components'
-import { useIsMobile } from '@/hooks/useIsMobile'
+import code from "@/assets/code.webp";
+import { Separator } from "@/components";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export const Skills = () => {
-  const extendedRef = useRef<HTMLDivElement | null>(null)
+  const extendedRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: extendedRef,
-    offset: ['start end', 'end end'],
-  })
-  const isMobile = useIsMobile()
+    offset: ["start end", "end end"],
+  });
+  const isMobile = useIsMobile();
 
   const opacity = useTransform(
     scrollYProgress,
     [0.17, 0.35, 0.75, 0.99, 1],
     [isMobile ? 0.8 : 0, 0.8, 0.9, 1, 0.9]
-  )
+  );
 
   const scale = useTransform(
     scrollYProgress,
     [0.3, 0.45, 0.75],
     [isMobile ? 0.96 : 0.4, isMobile ? 0.96 : 0.9, 1]
-  )
+  );
 
   return (
-    <section id="exp" className="relative h-[800px]">
+    <section id="exp" className="relative h-[800px] mt-[20%]">
       <div className="">
-        <h1 className="md:text-7xl text-3xl font-black md:mb-24 mb-10 max-w-[700px] text-center">
-          Expertises
+        <h1 className="md:text-3xl text-2xl mb-24 font-thin uppercase">
+          _002_Expertises___
         </h1>
 
         <motion.div
@@ -43,7 +43,6 @@ export const Skills = () => {
             <div className="flex flex-col gap-10 p-10">
               <div className="grid grid-flow-col">
                 <div />
-                {/* <GoBug size={94} /> */}
                 <p className="relative text-3xl mix-blend-difference 	">
                   <span className="blue">Frontend </span> <br /> Technologies
                 </p>
@@ -63,7 +62,7 @@ export const Skills = () => {
             </div>
             <Separator
               className="mb-10 "
-              orientation={isMobile ? 'horizontal' : 'vertical'}
+              orientation={isMobile ? "horizontal" : "vertical"}
             />
             <div className="flex flex-col gap-10 p-10">
               <div className="grid grid-flow-col">
@@ -89,7 +88,7 @@ export const Skills = () => {
             </div>
             <Separator
               className="mb-10 "
-              orientation={isMobile ? 'horizontal' : 'vertical'}
+              orientation={isMobile ? "horizontal" : "vertical"}
             />
 
             <div className="flex flex-col gap-10 p-10">
@@ -120,5 +119,5 @@ export const Skills = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -2,39 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.list-transform {
-  transform: perspective(100vw) rotateY(40deg) translateZ(0px) scale(1.2);
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  will-change: transform;
-  padding: 50px;
-  margin: 0;
-}
-
-.list-transform-mobile {
-  transform: perspective(100vw) rotateY(19deg) translateZ(0px) scale(1.2);
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  will-change: transform;
-  padding: 50px;
-  margin: 0;
-}
-
 .superBold {
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 700;
   font-style: normal;
   font-stretch: normal;
-  font-size: 9.6vw;
+  font-size: 4vw;
   letter-spacing: 0.02em;
   line-height: 0.9em;
 }
 
 .megenta::after {
   transition: all 0.1s ease-in-out;
-  content: '';
+  content: "";
   position: absolute;
   bottom: 23.5%;
   z-index: -1;
@@ -51,7 +33,7 @@
 .blue::after {
   transition: all 0.1s ease-in-out;
 
-  content: '';
+  content: "";
   position: absolute;
   bottom: 23.5%;
   z-index: -1;
@@ -67,7 +49,7 @@
 }
 .yellow::after {
   transition: all 0.1s ease-in-out;
-  content: '';
+  content: "";
   position: absolute;
   bottom: 23.5%;
   z-index: -1;
